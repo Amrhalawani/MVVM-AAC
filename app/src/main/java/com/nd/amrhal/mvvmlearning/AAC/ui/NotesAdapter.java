@@ -22,6 +22,11 @@ public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.BindingHolde
     private Context mContext;
     LayoutInflater layoutInflater;
 
+    public void updateList(List<note> newList) {
+        this.mNotes = newList;
+        notifyDataSetChanged();
+    }
+
     public NotesAdapter(List<note> mNotes, Context mContext) {
         this.mNotes = mNotes;
         this.mContext = mContext;
@@ -45,10 +50,14 @@ public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.BindingHolde
             note current = mNotes.get(position);
             holder.title.setText(current.getTitle());
             holder.body.setText(current.getBody());
+            holder.date.setText(current.getDate().toString());
+
         } else {
             // Covers the case of data not being ready yet.
             holder.title.setText("No title");
             holder.body.setText("No body");
+            holder.body.setText("No Timestamp");
+
 
         }
 
@@ -60,13 +69,14 @@ public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.BindingHolde
     }
 
     public static class BindingHolder extends RecyclerView.ViewHolder {
-        TextView title, body;
+        TextView title, body, date;
 
         public BindingHolder(View itemView) {
             super(itemView);
 
             title = itemView.findViewById(R.id.title);
             body = itemView.findViewById(R.id.body);
+            date = itemView.findViewById(R.id.date);
 
 
         }
