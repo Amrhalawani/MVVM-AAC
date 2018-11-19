@@ -1,6 +1,5 @@
 package com.nd.amrhal.mvvmlearning;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.support.v7.app.AppCompatActivity;
@@ -8,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
 
+import com.nd.amrhal.mvvmlearning.AAC.ui.NotesActivity;
 import com.nd.amrhal.mvvmlearning.databinding.ActivityFirstactivityBinding;
 import com.nd.amrhal.mvvmlearning.mvvmwithrecycler.MainActivity;
 
@@ -27,5 +27,10 @@ public class Firstactivity extends AppCompatActivity {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
         Toast.makeText(this, "buttton pressed", Toast.LENGTH_SHORT).show();
+    }
+
+    public void AAC(View view) {
+        Intent intent = new Intent(this,NotesActivity.class);
+        startActivity(intent);
     }
 }

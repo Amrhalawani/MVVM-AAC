@@ -25,6 +25,16 @@ public class MainActivity extends AppCompatActivity {
 
         List<Article> articles = new ArrayList<>();
 
+        addData(articles);
+
+
+
+        ArticleAdapter adapter = new ArticleAdapter( articles, this );
+        binding.contactList.setAdapter(adapter);
+    }
+
+    private void addData(List<Article> articles) {
+
         articles.add(new Article("An outbreak of parasitic bees",
                 "This summer, we are facing a very serious issue. And it is nothing else but an outbreak of parasitic bees.",
                 true, "android.resource://com.example.databindingblog/drawable/bee", 45));
@@ -40,8 +50,5 @@ public class MainActivity extends AppCompatActivity {
         articles.add(new Article("Rugby for everyone?",
                 "Until lately, rugby has been considered a sport played only by men. What are the consequences...",
                 false, "android.resource://com.example.databindingblog/drawable/rugby", 11));
-
-        ArticleAdapter adapter = new ArticleAdapter( articles, this );
-        binding.contactList.setAdapter(adapter);
     }
 }
