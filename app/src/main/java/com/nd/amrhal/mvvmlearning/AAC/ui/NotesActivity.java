@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.Toast;
 
 import com.nd.amrhal.mvvmlearning.AAC.data.note;
 import com.nd.amrhal.mvvmlearning.R;
@@ -47,11 +48,11 @@ public class NotesActivity extends AppCompatActivity {
     private void setupRecyclerView() {
         RecyclerView recyclerView = findViewById(R.id.recyclerview);
         noteArrayList = new ArrayList<>();
-        noteArrayList.add(new note("Hello", "lorem ipsemem ipselorem mlorem em ipsem", new Date()));
-        noteArrayList.add(new note("Main Cycle", "lorem ipsemem ipselorem mlorem em ipsem", new Date()));
-        noteArrayList.add(new note("Recycle", "lorem ipsemem ipselorem mlorem em ipsemm ipselorem " +
-                "mlorem em ipsemm ipselorem mlorem em ipsemm ipselorem mlorem em ipsemm ipselorem" +
-                " mlorem em ipsem", new Date()));
+//        noteArrayList.add(new note("Hello", "lorem ipsemem ipselorem mlorem em ipsem", new Date()));
+//        noteArrayList.add(new note("Main Cycle", "lorem ipsemem ipselorem mlorem em ipsem", new Date()));
+//        noteArrayList.add(new note("Recycle", "lorem ipsemem ipselorem mlorem em ipsemm ipselorem " +
+//                "mlorem em ipsemm ipselorem mlorem em ipsemm ipselorem mlorem em ipsemm ipselorem" +
+//                " mlorem em ipsem", new Date()));
 
         adapter = new NotesAdapter(noteArrayList, getApplicationContext());
         recyclerView.setAdapter(adapter);
@@ -62,7 +63,23 @@ public class NotesActivity extends AppCompatActivity {
 
     public void add(View view) {
         Intent intent = new Intent(this, addActivity.class);
-        startActivity(intent);
+        startActivityForResult(intent, 1);
+    }
+
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == 1 && resultCode == RESULT_OK) {
+            note note1 = new note(data.getStringExtra(addActivity.EXTRA_REPLY_TITLE)
+                    ,data.getStringExtra(addActivity.EXTRA_REPLY_BODY)
+                    ,new Date());
+            mNotesViewModel.insert(note1);
+        } else {
+            Toast.makeText(
+                    getApplicationContext(),
+                    "Not Saved",
+                    Toast.LENGTH_LONG).show();
+        }
     }
 
 

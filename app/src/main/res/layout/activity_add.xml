@@ -1,69 +1,86 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout
+
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <LinearLayout
+        android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
         android:orientation="horizontal"
-        android:layout_marginTop="15dp">
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="15dp"
             android:text="Title"
             android:textColor="@color/colorPrimary"
-            android:layout_marginRight="15dp"
-            android:layout_marginLeft="10dp"
-            android:textSize="20sp"/>
+            android:textSize="20sp" />
 
         <EditText
+            android:id="@+id/add_title"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:padding="5dp"
             android:layout_marginRight="15dp"
             android:background="@drawable/border"
-            android:id="@+id/title"/>
+            android:padding="5dp" />
 
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
         android:orientation="vertical"
-        android:layout_marginTop="100dp">
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="15dp"
             android:text="Body"
             android:textColor="@color/colorPrimary"
-            android:layout_marginRight="15dp"
-            android:layout_marginLeft="10dp"
-            android:textSize="20sp"/>
+            android:textSize="20sp" />
 
         <EditText
+            android:id="@+id/add_body"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-           android:layout_margin="15dp"
-            android:lines="5"
-            android:padding="10dp"
+            android:layout_margin="15dp"
             android:background="@drawable/border"
-
             android:gravity="start"
-            android:id="@+id/body"/>
+
+            android:lines="5"
+            android:padding="10dp" />
 
     </LinearLayout>
 
     <Button
+        android:id="@+id/save"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginEnd="18dp"
-        android:text="btn"
-        android:layout_marginBottom="22dp" />
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:text="Save"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
-</RelativeLayout>
+</android.support.constraint.ConstraintLayout>
