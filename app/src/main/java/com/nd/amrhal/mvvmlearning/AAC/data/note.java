@@ -57,4 +57,3 @@ public class note {
         this.body = body;
     }
 }
-
