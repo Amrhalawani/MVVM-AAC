@@ -48,11 +48,8 @@ public abstract class NotesDatabase extends RoomDatabase {
 
         @Override
         protected Void doInBackground(final Void... params) {
-            mDao.deleteAll();
-            note mnote = new note("Hello Room", "this is first test of this db", new Date());
-            mDao.insert(mnote);
-            mnote = new note("Hello Room2", "this is sec test of this db", new Date());
-            mDao.insert(mnote);
+           // mDao.deleteAll();
+
             return null;
         }
     }

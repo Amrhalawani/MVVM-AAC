@@ -57,7 +57,7 @@ public class NotesActivity extends AppCompatActivity {
         adapter = new NotesAdapter(noteArrayList, getApplicationContext());
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        adapter.updateList(noteArrayList);
+      //  adapter.updateList(noteArrayList);
 
     }
 

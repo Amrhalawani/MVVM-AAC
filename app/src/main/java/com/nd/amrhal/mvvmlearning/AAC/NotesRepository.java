@@ -15,22 +15,24 @@ import java.util.List;
 
 public class NotesRepository {
     private static NotesRepository instance;
-    private NotesDAO mNotesDAO;
-    private LiveData<List<note>> mAllNotes;
+    private static NotesDAO mNotesDAO;
+    private static LiveData<List<note>> mAllNotes;
 
-    public NotesRepository(Application application) {
-        NotesDatabase db = NotesDatabase.getInstance(application);
-        mNotesDAO = db.notesDAO();
-        mAllNotes = mNotesDAO.getNotes();
+    private NotesRepository() {
+
     }
 
-//    public static NotesRepository getInstance(Application application) {
-//        if ( instance == null) {
-//            instance = new NotesRepository(application);
-//            Log.e("Tag", "instantiate NotesRepository");
-//        }
-//        return instance;
-//    }
+    public static NotesRepository getInstance(Application application) {
+        if ( instance == null) {
+            instance = new NotesRepository();
+            NotesDatabase db = NotesDatabase.getInstance(application);
+            mNotesDAO = db.notesDAO();
+            mAllNotes = mNotesDAO.getNotes();
+
+            Log.e("Tag", "instantiate NotesRepository");
+        }
+        return instance;
+    }
 
 
     public LiveData<List<note>> getmAllNotes() {
